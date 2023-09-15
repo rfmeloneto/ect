@@ -6,7 +6,7 @@ from .models import Candidatos, Cidades, Estado, Urnas
 class UrnaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Urnas
-        exclude = ['candidato']
+        exclude = ['candidato', 'processo_eleitoral']
 
 
 class CandidatoSerializer(serializers.ModelSerializer):
