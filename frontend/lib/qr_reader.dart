@@ -35,7 +35,8 @@ class _QrCodeReaderState extends State<QrCodeReader> {
 
   void postJsonData(parsedData) async {
     Dio dio = Dio();
-    String url = 'http://10.113.254.27:8002/eleicao/api/salvar_urna/';
+    //String url = 'http://10.113.254.27:8002/eleicao/api/salvar_urna/';
+    String url = 'http://localhost:8002/eleicao/api/salvar_urna/';
     print("############## ENTROU NA COMUNICAÇÃO ##############");
     try {
       print("############## ENTROU NO TRY ##############");
@@ -81,21 +82,25 @@ class _QrCodeReaderState extends State<QrCodeReader> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text('Boletim Urna: $qrData'),
                 ),
-              ElevatedButton.icon(
-                icon: const Icon(Icons.qr_code_scanner),
-                onPressed: () {
-                  _qrBarCodeScannerDialogPlugin.getScannedQrBarCode(
-                      context: context,
-                      onCode: (qrData) {
-                        setState(() {
-                          this.qrData = qrData!;
-                          final parsedData = parseQRData(qrData);
-                          postJsonData(parsedData);
-                          print(parsedData);
+              SizedBox(
+                width: 300,
+                height: 100,
+                child: ElevatedButton.icon(
+                  icon: const Icon(Icons.qr_code_scanner),
+                  onPressed: () {
+                    _qrBarCodeScannerDialogPlugin.getScannedQrBarCode(
+                        context: context,
+                        onCode: (qrData) {
+                          setState(() {
+                            this.qrData = qrData!;
+                            final parsedData = parseQRData(qrData);
+                            postJsonData(parsedData);
+                            print(parsedData);
+                          });
                         });
-                      });
-                },
-                label: const Text("Ler Boletin de Urna"),
+                  },
+                  label: const Text("Ler Boletim de Urna"),
+                ),
               ),
             ],
           ),
