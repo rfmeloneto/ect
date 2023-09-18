@@ -33,7 +33,7 @@ class UrnaAPI(APIView):
                 'apto': data['APTO'],
                 'comp': data['COMP'],
                 'falt': data['FALT'],
-                'datab': data['DATAB'],
+                'datab': data['DTAB'],
                 'hrab': data['HRAB'],
                 'dtfc': data['DTFC'],
                 'hrfc': data['HRFC'],

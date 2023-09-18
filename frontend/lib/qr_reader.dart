@@ -23,8 +23,8 @@ class _QrCodeReaderState extends State<QrCodeReader> {
       List<String> keyValue = part.split(':');
 
       if (keyValue.length == 2) {
-        String chave = keyValue[0].trim();
-        String valor = keyValue[1].trim();
+        String chave = keyValue[0].trim().toString();
+        String valor = keyValue[1].trim().toString();
 
         jsonData[chave] = valor;
       }
@@ -35,8 +35,8 @@ class _QrCodeReaderState extends State<QrCodeReader> {
 
   void postJsonData(parsedData) async {
     Dio dio = Dio();
-    //String url = 'http://10.113.254.27:8002/eleicao/api/salvar_urna/';
-    String url = 'http://localhost:8002/eleicao/api/salvar_urna/';
+    String url = 'http://10.113.254.27:8002/eleicao/api/salvar_urna/';
+    //String url = 'http://localhost:8002/eleicao/api/salvar_urna/';
     print("############## ENTROU NA COMUNICAÇÃO ##############");
     try {
       print("############## ENTROU NO TRY ##############");
